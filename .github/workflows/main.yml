@@ -32,7 +32,7 @@ jobs:
           # will put all file under this path
           local_path: ./* # default is ./*
           # files will copy to under remote_path
-          remote_path: /home/ec2-user/testing_git
+          remote_path: /home/ubuntu/repo
 
           # sftp args
           args: '-o ConnectTimeout=5'
@@ -40,7 +40,7 @@ jobs:
       - name: ssh server
         uses: D3rHase/ssh-command-action@v0.2
         with:
-          HOST: ${{ secrets.HOST_DNST }}                              # Remote server address / ip - Required: true
+          HOST: ${{ secrets.HOST_DNS }}                              # Remote server address / ip - Required: true
           PORT: ${{ secrets.PORT }}  # default is 22                             # Remote server port -  Default: 22 - Required: false
           USER: ${{ secrets.USERNAME }}                              # Remote server user - Required: true
           PRIVATE_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}       # Private ssh key registered on the remote server - Required: true
