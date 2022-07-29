@@ -23,10 +23,10 @@ jobs:
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          username: ${{ secrets.USER }} 
-          server: ${{ secrets.HOST }} 
+          username: ${{ secrets.USERNAME }} 
+          server: ${{ secrets.HOST_DNS }} 
           port: ${{ secrets.PORT }}  # default is 22
-          ssh_private_key: ${{ secrets.KEY }} 
+          ssh_private_key: ${{ secrets.EC2_SSH_KEY }} 
 
 
           # will put all file under this path
@@ -40,10 +40,10 @@ jobs:
       - name: ssh server
         uses: D3rHase/ssh-command-action@v0.2
         with:
-          HOST: ${{ secrets.HOST }}                              # Remote server address / ip - Required: true
+          HOST: ${{ secrets.HOST_DNST }}                              # Remote server address / ip - Required: true
           PORT: ${{ secrets.PORT }}  # default is 22                             # Remote server port -  Default: 22 - Required: false
-          USER: ${{ secrets.USER }}                              # Remote server user - Required: true
-          PRIVATE_SSH_KEY: ${{ secrets.KEY }}       # Private ssh key registered on the remote server - Required: true
+          USER: ${{ secrets.USERNAME }}                              # Remote server user - Required: true
+          PRIVATE_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}       # Private ssh key registered on the remote server - Required: true
           COMMAND: |
                ls
                whoami
