@@ -17,6 +17,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
           username: ${{ secrets.USERNAME }} 
           server: ${{ secrets.HOST_DNS }} 
@@ -25,6 +27,8 @@ jobs:
           local_path: ./* # default is ./*
           # files will copy to under remote_path
           remote_path: /home/ubuntu/repo
+          # sftp args
+          args: '-o ConnectTimeout=5'
     #steps:
       - name: Say Hello World
         run: echo Hello, world!
