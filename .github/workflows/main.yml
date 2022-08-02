@@ -1,9 +1,29 @@
 name: Hello-World
-on: [push, workflow_dispatch]
+#on: [push, workflow_dispatch]
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          local_path: ./* # default is ./*
+          # files will copy to under remote_path
+          remote_path: /home/ubuntu/repo
+    #steps:
       - name: Say Hello World
         run: echo Hello, world!
+      # will put all file under this path
+        
+        
