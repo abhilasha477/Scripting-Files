@@ -1,4 +1,4 @@
-name: Hello-World
+name: Demo
 #on: [push, workflow_dispatch]
 # Controls when the action will run. 
 on:
@@ -18,6 +18,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
+          username: ${{ secrets.USERNAME }} 
+          server: ${{ secrets.HOST_DNS }} 
+          port: ${{ secrets.PORT }}  # default is 22
+          ssh_private_key: ${{ secrets.EC2_SSH_KEY }}
           local_path: ./* # default is ./*
           # files will copy to under remote_path
           remote_path: /home/ubuntu/repo
