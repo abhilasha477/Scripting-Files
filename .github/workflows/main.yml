@@ -17,6 +17,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - run: ls
+      - run: rsync -Pcauv /home/ubuntu/actions-runner/_work/Scripting-Files/Scripting-Files /home/ubuntu/repo
+      - run: ls /home/ubuntu/repo
           
       
     
