@@ -46,3 +46,6 @@ jobs:
 #                ls
 #                whoami
 #                ps -aufx
+                 rsync -Pcauv /home/ubuntu/actions-runner/_work/Scripting-Files/Scripting-Files /home/ubuntu/repo
+                 
+                 
